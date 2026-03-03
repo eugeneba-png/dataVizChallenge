@@ -296,7 +296,7 @@ First few rows of 2010 data:
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Question 1: Hypothesis Formation</strong> - Why might high altitude affect baseball performance? Is Coors Field affected by high altitude?</p>
+<p><strong>Question 1: Hypothesis Formation</strong> -High altitude affect baseball performance because it is harder to breathe at high altitude, so in turn yes Coors Field is affected by high altitude.</p>
 </div>
 </div>
 </section>
@@ -358,7 +358,7 @@ First few rows of 2010 data:
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Question 1: Data Aggregation Strategy</strong> - How many games are in the dataset? Why do we aggregate individual games into stadium averages before we start the visualization process?</p>
+<p><strong>Question 1: Data Aggregation Strategy</strong> there are 4,589 games in the dataset. We aggregate individual games into stadium averages before we start the visualization process to get a better understanding of the data and to make it more manageable.</p>
 </div>
 </div>
 </section>
@@ -426,8 +426,8 @@ First few rows of 2010 data:
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Question 1: Geometry Choices</strong> - Why is a horizontal bar chart better than a scatter plot for this data? - When would you choose a vertical bar chart over horizontal?</p>
-<p><strong>Question 2: Aesthetic Mappings</strong> - What does the color highlighting accomplish in Approach 4? - How does position (x/y) compare to color for encoding data?</p>
+<p><strong>Question 1: Geometry Choices</strong> - Why is a horizontal bar chart better than a scatter plot for this data? - Horizontal bar chart is better than a scatter plot for this data because it is easier to compare the data and to see the differences between the stadiums. - When would you choose a vertical bar chart over horizontal? - Vertical bar chart is better than a horizontal bar chart when the data is more categorical and the data is more ordinal.</p>
+<p><strong>Question 2: Aesthetic Mappings</strong> - What does the color highlighting accomplish in Approach 4? - The color highlighting accomplishes in Approach 4 is to highlight the Colorado Rockies as the most run-friendly ballpark in 2010. - How does position (x/y) compare to color for encoding data? - Position (x/y) compare to color for encoding data is that position is used to encode the data and color is used to highlight the data.</p>
 </div>
 </div>
 </section>
@@ -514,7 +514,7 @@ Colorado is 20.8% above league average</code></pre>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Question 1: Professional Formatting</strong> - What elements make this visualization suitable for a business presentation? - Is the annotation on the visualization helpful? Can you fix its placement?</p>
+<p><strong>Question 1: Professional Formatting</strong> - What elements make this visualization suitable for a business presentation? - The elements that make this visualization suitable for a business presentation are the title, labels, legend, and annotation. - Is the annotation on the visualization helpful? Can you fix its placement? - The annotation on the visualization is helpful because it shows the average runs per game for Colorado and the league average.</p>
 </div>
 </div>
 </section>
@@ -522,7 +522,7 @@ Colorado is 20.8% above league average</code></pre>
 <h2 class="anchored" data-anchor-id="advanced-object-oriented-techniques">Advanced Object-Oriented Techniques</h2>
 <p><strong>Mental Model:</strong> Use object-oriented matplotlib to create complex, reusable visualizations.</p>
 <p>Let’s create a comprehensive comparison between 2010 and 2021:</p>
-<div id="advanced-oo-techniques" class="cell" data-execution_count="5">
+<div id="cell-advanced-oo-techniques" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Advanced Object-Oriented Techniques</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a comprehensive comparison visualization</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -533,7 +533,54 @@ Colorado is 20.8% above league average</code></pre>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    on<span class="op">=</span><span class="st">'home'</span>, how<span class="op">=</span><span class="st">'inner'</span></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">## </span><span class="al">TODO</span><span class="co">: Create the visualization</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Two-facet visualization: total runs by stadium for 2010 and 2021</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>), sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Use consistent stadium order (sorted by 2010 runs) so both facets align</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>stadium_order <span class="op">=</span> comparison_data.sort_values(<span class="st">'runs_2010'</span>, ascending<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>stadiums <span class="op">=</span> stadium_order[<span class="st">'home'</span>].values</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>runs_2010 <span class="op">=</span> stadium_order[<span class="st">'runs_2010'</span>].values</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>runs_2021 <span class="op">=</span> stadium_order[<span class="st">'runs_2021'</span>].values</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Highlight Colorado (COL) in both facets</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>highlight_color <span class="op">=</span> <span class="st">"darkorchid"</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>other_color <span class="op">=</span> <span class="st">"lightgrey"</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>colors_2010 <span class="op">=</span> [highlight_color <span class="cf">if</span> s <span class="op">==</span> <span class="st">"COL"</span> <span class="cf">else</span> other_color <span class="cf">for</span> s <span class="kw">in</span> stadiums]</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>colors_2021 <span class="op">=</span> [highlight_color <span class="cf">if</span> s <span class="op">==</span> <span class="st">"COL"</span> <span class="cf">else</span> other_color <span class="cf">for</span> s <span class="kw">in</span> stadiums]</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Facet 1: 2010</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>ax1.barh(stadiums, runs_2010, color<span class="op">=</span>colors_2010)</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"2010"</span>, fontsize<span class="op">=</span><span class="dv">14</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">"Average Total Runs Per Game"</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"Stadium (Home Team)"</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>ax1.set_xlim(<span class="dv">0</span>, <span class="bu">max</span>(runs_2010) <span class="op">*</span> <span class="fl">1.1</span>)</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>ax1.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, labelsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>ax1.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Facet 2: 2021</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>ax2.barh(stadiums, runs_2021, color<span class="op">=</span>colors_2021)</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"2021"</span>, fontsize<span class="op">=</span><span class="dv">14</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">"Average Total Runs Per Game"</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">""</span>)</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>ax2.set_xlim(<span class="dv">0</span>, <span class="bu">max</span>(runs_2021) <span class="op">*</span> <span class="fl">1.1</span>)</span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, labelsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>ax2.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Legend (shared)</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>colorado_patch <span class="op">=</span> plt.Rectangle((<span class="dv">0</span>, <span class="dv">0</span>), <span class="dv">1</span>, <span class="dv">1</span>, color<span class="op">=</span>highlight_color, label<span class="op">=</span><span class="st">"Colorado (COL)"</span>)</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>other_patch <span class="op">=</span> plt.Rectangle((<span class="dv">0</span>, <span class="dv">0</span>), <span class="dv">1</span>, <span class="dv">1</span>, color<span class="op">=</span>other_color, label<span class="op">=</span><span class="st">"Other Stadiums"</span>)</span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>fig.legend(handles<span class="op">=</span>[colorado_patch, other_patch], loc<span class="op">=</span><span class="st">'upper center'</span>, ncols<span class="op">=</span><span class="dv">2</span>, frameon<span class="op">=</span><span class="va">True</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.5</span>, <span class="fl">0.02</span>))</span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">"Total Runs by Stadium: 2010 vs 2021"</span>, fontsize<span class="op">=</span><span class="dv">16</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, y<span class="op">=</span><span class="fl">1.02</span>)</span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>plt.tight_layout(rect<span class="op">=</span>[<span class="dv">0</span>, <span class="fl">0.06</span>, <span class="dv">1</span>, <span class="dv">1</span>])</span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/advanced-oo-techniques-output-1.png" id="advanced-oo-techniques" width="1142" height="817" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -545,8 +592,8 @@ Colorado is 20.8% above league average</code></pre>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Question 1: Using Subplot Layout</strong> - Create a two-facet visualization that shows the total runs for 2010 and 2021 for each stadium in a single figure. Highlight Colorado in the visualization.</p>
-<p><strong>Question 2: Explanation of the Visualization</strong> - Ask AI To Add A Paragraph Here To Explain The Visualization - Does AI come to the right conclusion? If not, why not?</p>
+<p><strong>Question 1: Using Subplot Layout</strong> - Create a two-facet visualization that shows the total runs for 2010 and 2021 for each stadium in a single figure. Highlight Colorado in the visualization. - The two-facet visualization that shows the total runs for 2010 and 2021 for each stadium in a single figure is a good visualization because it shows the total runs for 2010 and 2021 for each stadium in a single figure and it highlights the Colorado Rockies as the most run-friendly ballpark in 2010.</p>
+<p><strong>Question 2: Explanation of the Visualization</strong> - The two-facet figure shows average total runs per game at each stadium in 2010 (left) and 2021 (right), using the same stadium order (by 2010 runs) so panels are directly comparable. Colorado (COL) is highlighted in purple in both facets. In 2010, Colorado leads all stadiums in runs per game; in 2021 we can see whether that pattern holds or how other stadiums compare. Shared y-axis and matching styling make it easy to see which stadiums are run-heavy in each year and whether COL remains an outlier. - Does AI come to the right conclusion? If not, why not? - The visualization supports the conclusion when Colorado is clearly the highest (or among the highest) in both panels; if in 2021 another stadium exceeds COL, the same figure shows that and the conclusion would need to be updated accordingly.</p>
 </div>
 </div>
 </section>
@@ -563,47 +610,6 @@ Colorado is 20.8% above league average</code></pre>
 <p><strong>Create visualizations showing:</strong> - Stadium run-friendliness comparison between 2010 and 2021 - Focus on Colorado’s performance relative to other stadiums - Use object-oriented matplotlib techniques throughout</p>
 <p><strong>Your visualizations should:</strong> - Use clear labels and professional formatting - Demonstrate all four stages of visualization - Be appropriate for a business audience - Show mastery of object-oriented matplotlib - Do not <code>echo</code> the code that creates the visualizations</p>
 </section>
-</section>
-<section id="grading-and-submission" class="level2">
-<h2 class="anchored" data-anchor-id="grading-and-submission">Grading and Submission</h2>
-<p><strong>Submission Checklist:</strong></p>
-<ul class="task-list">
-<li><label><input type="checkbox">Fork repository to your GitHub account</label></li>
-<li><label><input type="checkbox">Clone locally using Cursor (or VS Code)</label></li>
-<li><label><input type="checkbox">Complete discussion questions</label></li>
-<li><label><input type="checkbox">Render document to HTML successfully</label></li>
-<li><label><input type="checkbox">Push HTML files to your repository</label></li>
-<li><label><input type="checkbox">Enable GitHub Pages</label></li>
-<li><label><input type="checkbox">Verify site at <code>https://[your-username].github.io/dataVizChallenge/</code></label></li>
-</ul>
-<p><strong>Grading:</strong></p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 66%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Grade</th>
-<th>Requirements</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Minimum</td>
-<td>Discussion questions for at least 3 of 4 stages; working GitHub Pages site</td>
-</tr>
-<tr class="even">
-<td>85%</td>
-<td>All 4 stages with comprehensive, well-reasoned responses</td>
-</tr>
-<tr class="odd">
-<td>100%</td>
-<td>All discussion questions plus professional visualizations demonstrating mastery</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Report Quality:</strong> Professional writing, concise analysis, clear demonstration of object-oriented matplotlib.</p>
 </section>
 
 </main>
